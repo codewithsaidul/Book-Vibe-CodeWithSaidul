@@ -3,6 +3,7 @@ import Root from "../root/Root";
 import Home from "../pages/Home";
 import ListedBooks from "../pages/ListedBooks"
 import PageToRead from "../pages/PageToRead"
+import About from "../pages/About";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -11,6 +12,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home/>
+      },
+      {
+        path: '/about',
+        element: <About/>
       },
       {
         path: '/listed-books',
