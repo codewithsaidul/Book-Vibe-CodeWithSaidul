@@ -1,7 +1,7 @@
 # Book Vibe
 
 
-![website image](web.png)
+![website image](./src/assets/web.png)
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
