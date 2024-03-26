@@ -25,11 +25,5 @@
    2. Scatter Plot: The website may also utilize a scatter plot, where each point represents a book, with the 
        x-axis denoting the book name and the y-axis denoting the total pages. Users can hover over each point to view additional details such as the book name and total pages.
 
-   3. Interactive Features: The visual representation may include interactive features such as zooming, panning,
-       or  filtering, allowing users to focus on specific subsets of books or explore details by hovering over data points.
-
-   4. Customization Options: Users can customize the visual representation by adjusting parameters such as the 
-       color scheme, axis labels, and data aggregation methods, tailoring the visualization to their preferences and requirements.
-
 
 
