@@ -64,7 +64,7 @@ function ListedBooks() {
             ))}
         </div>
 
-        <div>
+        <div className="flex flex-col gap-16 my-10">
           {tabIndex === 1 &&
             wishLists.map((wishList) => (
               <Wishlist key={wishList.bookId} wishList={wishList}></Wishlist>

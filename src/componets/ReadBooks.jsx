@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 const ReadBooks = ({ readBook }) => {
   const {
+    bookId,
     image,
     bookName,
     author,
@@ -17,7 +18,7 @@ const ReadBooks = ({ readBook }) => {
     rating,
   } = readBook;
   return (
-    <div className="flex flex-col gap-16 border p-5">
+    <div className="flex flex-col gap-16 border p-5 rounded-xl">
       <div className="flex gap-10">
         <figure className="h-[300px] py-12 px-8 bg-[#1313130D]">
           <img src={image} className="h-full w-full" alt="book image" />
@@ -73,7 +74,10 @@ const ReadBooks = ({ readBook }) => {
               Rating: {rating}
             </button>
 
-            <Link className="py-3 px-7 bg-[#23BE0A] text-[#fff] rounded-[30px]">
+            <Link
+              to={`/book/${bookId}`}
+              className="py-3 px-7 bg-[#23BE0A] text-[#fff] rounded-[30px]"
+            >
               View Details
             </Link>
           </div>
