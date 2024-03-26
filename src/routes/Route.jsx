@@ -8,10 +8,12 @@ import PageToRead from "../pages/PageToRead"
 import About from "../pages/About";
 import BookDetails from "../pages/BookDetails";
 import Contact from "../componets/Contact";
+import ErrorPage from "../componets/ErrorPage";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
+    errorElement: <ErrorPage/>,
     children: [
       {
         path: "/",
