@@ -8,7 +8,7 @@ function Home() {
   
   // const [books, setBooks] = useState([]);
   return (
-    <div>
+    <div className="w-full max-w-[1170px]  mx-auto">
       <Banner />
       <Books />
     </div>

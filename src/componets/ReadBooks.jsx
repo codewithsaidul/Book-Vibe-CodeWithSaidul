@@ -1,12 +1,90 @@
+import { CiLocationOn } from "react-icons/ci";
+import { FiUsers } from "react-icons/fi";
+import { TbPageBreak } from "react-icons/tb";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
-// import PropTypes from 'prop-types'
-
-const ReadBooks = () => {
+const ReadBooks = ({ readBook }) => {
+  const {
+    image,
+    bookName,
+    author,
+    category,
+    tags,
+    totalPages,
+    publisher,
+    yearOfPublishing,
+    rating,
+  } = readBook;
   return (
-    <div>ReadBooks</div>
-  )
-}
+    <div className="flex flex-col gap-16 border p-5">
+      <div className="flex gap-10">
+        <figure className="h-[300px] py-12 px-8 bg-[#1313130D]">
+          <img src={image} className="h-full w-full" alt="book image" />
+        </figure>
 
-ReadBooks.propTypes = {}
+        <div>
+          <h2 className="text-2xl text-[#131313] font-bold mb-4">{bookName}</h2>
+          <h5 className="text-base text-#131313CC[#131313CC] font-medium mb-8">
+            By: {author}
+          </h5>
 
-export default ReadBooks
+          <div className="flex gap-x-5 items-center mb-8">
+            <h3 className="text-base text-[#131313] font-bold">Tag</h3>
+
+            <div>
+              {tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="mr-5 text-base text-center font-medium text-[#23BE0A] py-2 px-4 bg-[#23BE0A0D] rounded-[30px]"
+                >
+                  #{tag}
+                </span>
+              ))}
+            </div>
+
+            <div className="flex gap-x-2 items-center text-base text-[#131313CC] font-medium">
+              <CiLocationOn size={20} />
+
+              <h3>Year of Publishing: {yearOfPublishing}</h3>
+            </div>
+          </div>
+
+          <div className="flex gap-x-10 border-b pb-5 mb-8">
+            <h3 className="flex gap-x-2 items-center textbase text-[#13131399] font-normal">
+              <FiUsers />
+              Publisher: {publisher}
+            </h3>
+
+            <h3 className="flex gap-x-2 items-center textbase text-[#13131399] font-normal">
+              <TbPageBreak />
+
+              <span>
+                Page <span className="ml-3">{totalPages}</span>
+              </span>
+            </h3>
+          </div>
+
+          <div className="flex gap-x-7">
+            <button className="py-3 px-7 bg-[#328EFF26] text-[#328EFF] rounded-[30px]">
+              Category: {category}
+            </button>
+            <button className="py-3 px-7 bg-[#FFAC3326] text-[#FFAC33] rounded-[30px]">
+              Rating: {rating}
+            </button>
+
+            <Link className="py-3 px-7 bg-[#23BE0A] text-[#fff] rounded-[30px]">
+              View Details
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+ReadBooks.propTypes = {
+  readBook: PropTypes.object,
+};
+
+export default ReadBooks;
