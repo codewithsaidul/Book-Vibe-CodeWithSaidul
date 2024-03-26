@@ -1,6 +1,6 @@
 # Book Vibe
 
-- [Live Link ](https://react-book-vibes.netlify.app/)
+- [ Book Vibe ](https://react-book-vibes.netlify.app/)
 
 ![website image](./src/assets/web.png)
 
@@ -19,16 +19,16 @@
 * Visual Representation: The website presents search results in a visually appealing manner, displaying book names
   along with their corresponding total pages in a graphical format, such as a bar chart or a scatter plot.
 
-   ** Bar Chart: Each book name is represented by a bar, where the length of the bar corresponds to the total pages 
+   1. Bar Chart: Each book name is represented by a bar, where the length of the bar corresponds to the total pages 
       of the book. Users can quickly compare the lengths of the bars to gauge the length of each book.
 
-   ** Scatter Plot: The website may also utilize a scatter plot, where each point represents a book, with the 
+   2. Scatter Plot: The website may also utilize a scatter plot, where each point represents a book, with the 
        x-axis denoting the book name and the y-axis denoting the total pages. Users can hover over each point to view additional details such as the book name and total pages.
 
-    ** Interactive Features: The visual representation may include interactive features such as zooming, panning,
+   3. Interactive Features: The visual representation may include interactive features such as zooming, panning,
        or  filtering, allowing users to focus on specific subsets of books or explore details by hovering over data points.
 
-    ** Customization Options: Users can customize the visual representation by adjusting parameters such as the 
+   4. Customization Options: Users can customize the visual representation by adjusting parameters such as the 
        color scheme, axis labels, and data aggregation methods, tailoring the visualization to their preferences and requirements.
 
 
