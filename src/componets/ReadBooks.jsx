@@ -3,9 +3,8 @@ import { FiUsers } from "react-icons/fi";
 import { TbPageBreak } from "react-icons/tb";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { MdDeleteForever } from "react-icons/md";
 
-const ReadBooks = ({ readBook, handleRemoveReadList }) => {
+const ReadBooks = ({ readBook }) => {
   const {
     bookId,
     image,
@@ -82,12 +81,7 @@ const ReadBooks = ({ readBook, handleRemoveReadList }) => {
               View Details
             </Link>
 
-            <button
-              onClick={() => handleRemoveReadList(bookId)}
-              className="bg-red-500 flex items-center text-center justify-center text-[#fff] rounded-[30px]"
-            >
-              <MdDeleteForever size={20} /> Remove
-            </button>
+            
           </div>
         </div>
       </div>
@@ -97,7 +91,6 @@ const ReadBooks = ({ readBook, handleRemoveReadList }) => {
 
 ReadBooks.propTypes = {
   readBook: PropTypes.object,
-  handleRemoveReadList: PropTypes.func
 };
 
 export default ReadBooks;

@@ -1,13 +1,12 @@
 import { CiLocationOn } from "react-icons/ci";
 import { FiUsers } from "react-icons/fi";
 import { TbPageBreak } from "react-icons/tb";
-import { MdDeleteForever } from "react-icons/md";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 
 
-const Wishlist = ({ wishList, handleRemoveWishList }) => {
+const Wishlist = ({ wishList }) => {
   const {
     bookId,
     image,
@@ -83,13 +82,6 @@ const Wishlist = ({ wishList, handleRemoveWishList }) => {
             >
               View Details
             </Link>
-
-            <button
-              onClick={() => handleRemoveWishList(bookId)}
-              className="bg-red-500 flex items-center text-center justify-center text-[#fff] rounded-[30px]"
-            >
-              <MdDeleteForever size={20} /> Remove
-            </button>
           </div>
         </div>
       </div>
