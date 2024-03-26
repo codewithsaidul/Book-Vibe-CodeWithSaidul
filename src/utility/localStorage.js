@@ -21,16 +21,33 @@ export const saveReadBooks = book => {
     const isExist = readBooks.find(b => b.bookId === book.bookId);
 
     if (isExist) {
-        return toast.error('Already Added!')
+        return toast.error('You Have Already Read This Book!')
     }
 
     readBooks.push(book);
 
     localStorage.setItem('read-books', JSON.stringify(readBooks));
-    toast.success('Successfully toasted!')
-
+    toast.success('Books Added To Read List!')
 }
 
+
+// Book Removed From Read List
+
+export const removeReadList = bookId => {
+    let readBooks = getReadBooks();
+
+    console.log(bookId);
+
+    const remainingReadList = readBooks.filter(b => b.bookId !== bookId);
+
+    localStorage.setItem('read-books', JSON.stringify(remainingReadList));
+
+    toast.success('Remove From Read List!')
+}
+
+
+
+// Get The Wish List Book From LocalStorage
 
 export const getWishlist = () => {
     let wishList = [];
@@ -56,7 +73,7 @@ export const saveWishlist = book => {
     
 
     if (isExist) {
-        return toast.error('Already Added On Read Books!')
+        return toast.error('You Have Already Read This Book!')
     } else {
         const isExistWishList = wishList.find(b => b.bookId === book.bookId); 
 
@@ -68,6 +85,21 @@ export const saveWishlist = book => {
     wishList.push(book);
 
     localStorage.setItem('wish-books', JSON.stringify(wishList));
-    toast.success('Successfully toasted!')
+    toast.success('Books Added To Wish List!')
 
+}
+
+// Book Removed From Wish List
+
+
+export const removeWishList = bookId => {
+    let wishList = getWishlist();
+
+    console.log(bookId);
+
+    const remainingWishList = wishList.filter(b => b.bookId !== bookId);
+
+    localStorage.setItem('wish-books', JSON.stringify(remainingWishList));
+
+    toast.success('Remove From Wish List!')
 }

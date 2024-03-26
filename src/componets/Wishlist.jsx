@@ -1,23 +1,26 @@
 import { CiLocationOn } from "react-icons/ci";
 import { FiUsers } from "react-icons/fi";
 import { TbPageBreak } from "react-icons/tb";
+import { MdDeleteForever } from "react-icons/md";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 
-const Wishlist = ({ wishList }) => {
-    const {
-      bookId,
-      image,
-      bookName,
-      author,
-      category,
-      tags,
-      totalPages,
-      publisher,
-      yearOfPublishing,
-      rating,
-    } = wishList;
+
+const Wishlist = ({ wishList, handleRemoveWishList }) => {
+  const {
+    bookId,
+    image,
+    bookName,
+    author,
+    category,
+    tags,
+    totalPages,
+    publisher,
+    yearOfPublishing,
+    rating,
+  } = wishList;
+
   return (
     <div className="flex flex-col gap-16 border p-5 rounded-xl">
       <div className="flex gap-10">
@@ -81,6 +84,12 @@ const Wishlist = ({ wishList }) => {
             >
               View Details
             </Link>
+            <button
+              onClick={() => handleRemoveWishList(bookId)}
+              className="p-4 bg-red-500 text-[#fff] rounded-[30px]"
+            >
+               <MdDeleteForever size={20} />
+            </button>
           </div>
         </div>
       </div>
@@ -89,7 +98,8 @@ const Wishlist = ({ wishList }) => {
 };
 
 Wishlist.propTypes = {
-  wishList: PropTypes.object
+  wishList: PropTypes.object,
+  handleRemoveWishList: PropTypes.func,
 };
 
 export default Wishlist;

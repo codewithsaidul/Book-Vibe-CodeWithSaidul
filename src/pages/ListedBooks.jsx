@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getReadBooks, getWishlist } from "../utility/localStorage";
+import { getReadBooks, getWishlist, removeReadList, removeWishList } from "../utility/localStorage";
 import ReadBooks from "../componets/ReadBooks";
 import Wishlist from "../componets/Wishlist";
 
@@ -24,7 +24,22 @@ function ListedBooks() {
 
   }, []);
 
-  console.log(wishLists);
+  // Remove Book from Read List
+  const handleRemoveReadList = (bookId) => {
+    removeReadList(bookId);
+
+     const storedReadBooks = getReadBooks();
+     setReadBooks(storedReadBooks);
+  };
+
+  // Remove Book from Wish List
+
+  const handleRemoveWishList = (bookId) => {
+    removeWishList(bookId);
+
+    const storedWishList = getWishlist();
+    setWishList(storedWishList);
+  };
 
   return (
     <div className="w-full max-w-[1170px]  mx-auto">
@@ -60,14 +75,22 @@ function ListedBooks() {
         <div className="flex flex-col gap-16 my-10">
           {tabIndex === 0 &&
             readBooks.map((readBook) => (
-              <ReadBooks key={readBook.bookId} readBook={readBook}></ReadBooks>
+              <ReadBooks
+                key={readBook.bookId}
+                readBook={readBook}
+                handleRemoveReadList={handleRemoveReadList}
+              ></ReadBooks>
             ))}
         </div>
 
         <div className="flex flex-col gap-16 my-10">
           {tabIndex === 1 &&
             wishLists.map((wishList) => (
-              <Wishlist key={wishList.bookId} wishList={wishList}></Wishlist>
+              <Wishlist
+                key={wishList.bookId}
+                wishList={wishList}
+                handleRemoveWishList={handleRemoveWishList}
+              ></Wishlist>
             ))}
         </div>
       </div>
