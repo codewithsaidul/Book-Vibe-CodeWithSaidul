@@ -19,9 +19,9 @@ const ReadBooks = ({ readBook, handleRemoveReadList }) => {
     rating,
   } = readBook;
   return (
-    <div className="flex flex-col gap-16 border p-5 rounded-xl">
-      <div className="flex gap-10">
-        <figure className="h-[300px] py-12 px-8 bg-[#1313130D]">
+    <div className="border p-5 rounded-xl">
+      <div className="flex flex-col lg:flex-row gap-10">
+        <figure className="lg:h-[300px] py-12 px-8 bg-[#1313130D]">
           <img src={image} className="h-full w-full" alt="book image" />
         </figure>
 
@@ -31,14 +31,14 @@ const ReadBooks = ({ readBook, handleRemoveReadList }) => {
             By: {author}
           </h5>
 
-          <div className="flex gap-x-5 items-center mb-8">
-            <h3 className="text-base text-[#131313] font-bold">Tag</h3>
+          <div className="flex flex-col sm:flex-row gap-5 lg:items-center mb-8">
 
-            <div>
+            <div className="flex items-center">
+            <h3 className="text-base text-[#131313] font-bold">Tag</h3>
               {tags.map((tag) => (
                 <span
                   key={tag}
-                  className="mr-5 text-base text-center font-medium text-[#23BE0A] py-2 px-4 bg-[#23BE0A0D] rounded-[30px]"
+                  className="md:mr-5 text-base text-center font-medium text-[#23BE0A] py-2 px-4 bg-[#23BE0A0D] rounded-[30px]"
                 >
                   #{tag}
                 </span>
@@ -67,11 +67,11 @@ const ReadBooks = ({ readBook, handleRemoveReadList }) => {
             </h3>
           </div>
 
-          <div className="flex gap-x-7">
-            <button className="py-3 px-7 bg-[#328EFF26] text-[#328EFF] rounded-[30px]">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-3 gap-y-6">
+            <button className="py-3 px-5 bg-[#328EFF26] text-[#328EFF] rounded-[30px]">
               Category: {category}
             </button>
-            <button className="py-3 px-7 bg-[#FFAC3326] text-[#FFAC33] rounded-[30px]">
+            <button className="py-3 px-5 bg-[#FFAC3326] text-[#FFAC33] rounded-[30px]">
               Rating: {rating}
             </button>
 
@@ -84,9 +84,9 @@ const ReadBooks = ({ readBook, handleRemoveReadList }) => {
 
             <button
               onClick={() => handleRemoveReadList(bookId)}
-              className="p-4 bg-red-500 text-[#fff] rounded-[30px]"
+              className="bg-red-500 flex items-center text-center justify-center text-[#fff] rounded-[30px]"
             >
-              <MdDeleteForever size={20} />
+              <MdDeleteForever size={20} /> Remove
             </button>
           </div>
         </div>
