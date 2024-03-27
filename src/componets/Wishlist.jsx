@@ -3,10 +3,11 @@ import { FiUsers } from "react-icons/fi";
 import { TbPageBreak } from "react-icons/tb";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { MdDeleteForever } from "react-icons/md";
 
 
 
-const Wishlist = ({ wishList }) => {
+const Wishlist = ({ wishList, deleteWishList }) => {
   const {
     bookId,
     image,
@@ -22,7 +23,7 @@ const Wishlist = ({ wishList }) => {
 
   return (
     <div className="border p-5 rounded-xl">
-      <div className="flex flex-col lg:flex-row gap-10">
+      <div className="flex flex-col lg:flex-row gap-10 relative">
         <figure className="lg:h-[300px] py-12 px-8 bg-[#1313130D]">
           <img src={image} className="h-full w-full" alt="book image" />
         </figure>
@@ -83,6 +84,13 @@ const Wishlist = ({ wishList }) => {
               View Details
             </Link>
           </div>
+
+          <div
+            onClick={() => deleteWishList(bookId)}
+            className="absolute -top-7 lg:-top-10 -right-5 lg:-right-8 p-3 text-white bg-red-500 rounded-full"
+          >
+            <MdDeleteForever size={24} />
+          </div>
         </div>
       </div>
     </div>
@@ -91,7 +99,7 @@ const Wishlist = ({ wishList }) => {
 
 Wishlist.propTypes = {
   wishList: PropTypes.object,
-  handleRemoveWishList: PropTypes.func,
+  deleteWishList: PropTypes.func,
 };
 
 export default Wishlist;

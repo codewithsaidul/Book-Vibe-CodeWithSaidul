@@ -2,12 +2,13 @@
 import { IoIosArrowDown } from "react-icons/io";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getReadBooks, getWishlist } from "../utility/localStorage";
+import { getReadBooks, getWishlist, removeReadList, removeWishList } from "../utility/localStorage";
 import ReadBooks from "../componets/ReadBooks";
 import Wishlist from "../componets/Wishlist";
 
 
 function ListedBooks() {
+
 
   const [tabIndex, setTabIndex] = useState(0);
 
@@ -15,37 +16,83 @@ function ListedBooks() {
 
   const [displyReadBooks, setDisplayReadBooks] = useState([])
 
-  const [wishLists, setWishList] = useState([])
+  const [wishLists, setWishList] = useState([]);
+
+  const [displayWishlists, setDisplayWishlist] = useState([]);
 
 
   useEffect(() => {
     const storedReadBooks = getReadBooks();
     setReadBooks(storedReadBooks);
     setDisplayReadBooks(storedReadBooks);
-
-    const storedWishList = getWishlist();
-    setWishList(storedWishList);
-  }, []);
-
-  // Handle Filter books
-
+    
   
 
 
-  const handleFilterBooks = filter => {
+    // Wish List 
+    const storedWishList = getWishlist();
+    setWishList(storedWishList);
+    setDisplayWishlist(storedWishList);
+  }, [])
+
+
+
+
+  // Handle Filter books for Read Books List
+  const handleFilterReadBooks = filter => {
     if (filter === 'rating') {
-      const bookRating = readBooks.sort((a, b) => b.rating - a.rating)
+      const bookRating = readBooks.slice().sort((a, b) => b.rating - a.rating);
       setDisplayReadBooks(bookRating);
     } else if (filter === 'pages') {
-      const bookPages = readBooks.sort((a, b) => b.totalPages - a.totalPages);
+      const bookPages = readBooks
+        .slice()
+        .sort((a, b) => b.totalPages - a.totalPages);
       setDisplayReadBooks(bookPages);
+      
     } else if (filter === "PublisherYear") {
-      const bookPublisherYear = readBooks.sort(
-        (a, b) => b.yearOfPublishing - a.yearOfPublishing
-      );
+      const bookPublisherYear = readBooks
+        .slice()
+        .sort((a, b) => b.yearOfPublishing - a.yearOfPublishing);
       setDisplayReadBooks(bookPublisherYear);
     }
   }
+
+
+  // Handle Filter Book for Wish List
+  const handleFilterWishList = filter => {
+     if (filter === "rating") {
+       const bookRating = wishLists.slice().sort((a, b) => b.rating - a.rating);
+       setDisplayWishlist(bookRating);
+     } else if (filter === "pages") {
+       const bookPages = wishLists
+         .slice()
+         .sort((a, b) => b.totalPages - a.totalPages);
+       setDisplayWishlist(bookPages);
+     } else if (filter === "PublisherYear") {
+       const bookPublisherYear = wishLists
+         .slice()
+         .sort((a, b) => b.yearOfPublishing - a.yearOfPublishing);
+       setDisplayWishlist(bookPublisherYear);
+     }
+  }
+
+  // Remove Books From Read Books List
+
+const deleteReadBooks = bookId => {
+  removeReadList(bookId);
+
+  const storedReadBooks = getReadBooks();
+  setDisplayReadBooks(storedReadBooks);
+}
+
+// Remove Books From Wish List
+
+const deleteWishList = bookId => {
+  removeWishList(bookId);
+
+  const storedWishList = getWishlist();
+  setDisplayWishlist(storedWishList);
+}
 
 
 
@@ -57,24 +104,52 @@ function ListedBooks() {
       </div>
 
       <div>
-        <div className="flex justify-center my-10">
-          <details className="dropdown">
-            <summary className="m-1 btn hover:bg-[#23BE0A] bg-[#23BE0A] text-white">
-              Sort By <IoIosArrowDown size={24} />
-            </summary>
-            <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
-              <li onClick={() => handleFilterBooks("rating")}>
-                <a>Rating</a>
-              </li>
-              <li onClick={() => handleFilterBooks("pages")}>
-                <a>Number of pages</a>
-              </li>
-              <li onClick={() => handleFilterBooks("PublisherYear")}>
-                <a>Publisher year</a>
-              </li>
-            </ul>
-          </details>
-        </div>
+        {/* Filter Books for Read Books List */}
+
+        {tabIndex === 0 && (
+          <div className="flex justify-center my-10">
+            <details className="dropdown">
+              <summary className="m-1 btn hover:bg-[#23BE0A] bg-[#23BE0A] text-white">
+                Sort By <IoIosArrowDown size={24} />
+              </summary>
+              <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+                <li onClick={() => handleFilterReadBooks("rating")}>
+                  <a>Rating</a>
+                </li>
+                <li onClick={() => handleFilterReadBooks("pages")}>
+                  <a>Number of pages</a>
+                </li>
+                <li onClick={() => handleFilterReadBooks("PublisherYear")}>
+                  <a>Publisher year</a>
+                </li>
+              </ul>
+            </details>
+          </div>
+        )}
+
+        {/* Filter Books for Wish List */}
+
+        {tabIndex === 1 && (
+          <div className="flex justify-center my-10">
+            <details className="dropdown">
+              <summary className="m-1 btn hover:bg-[#23BE0A] bg-[#23BE0A] text-white">
+                Sort By <IoIosArrowDown size={24} />
+              </summary>
+              <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+                <li onClick={() => handleFilterWishList("rating")}>
+                  <a>Rating</a>
+                </li>
+                <li onClick={() => handleFilterWishList("pages")}>
+                  <a>Number of pages</a>
+                </li>
+                <li onClick={() => handleFilterWishList("PublisherYear")}>
+                  <a>Publisher Year</a>
+                </li>
+              </ul>
+            </details>
+          </div>
+        )}
+
         <div>
           <div className="flex items-center -mx-4 overflow-x-hidden  overflow-y-hidden flex-nowrap dark:bg-gray-100 dark:text-gray-800">
             <Link
@@ -105,18 +180,18 @@ function ListedBooks() {
               <ReadBooks
                 key={readBook.bookId}
                 readBook={readBook}
-                // handleRemoveReadList={handleRemoveReadList}
+                deleteReadBooks={deleteReadBooks}
               ></ReadBooks>
             ))}
         </div>
 
         <div className="flex flex-col gap-16 my-10">
           {tabIndex === 1 &&
-            wishLists.map((wishList) => (
+            displayWishlists.map((wishList) => (
               <Wishlist
                 key={wishList.bookId}
                 wishList={wishList}
-                // handleRemoveWishList={handleRemoveWishList}
+                deleteWishList={deleteWishList}
               ></Wishlist>
             ))}
         </div>

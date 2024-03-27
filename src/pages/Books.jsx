@@ -7,7 +7,7 @@ function Books() {
     const books = useLoaderData();
     
   return (
-    <div>
+    <div className="w-full max-w-[1170px]  mx-auto">
       <h2 className="text-5xl text-center font-bold text-[#131313] mt-20 mb-10">
         Books
       </h2>

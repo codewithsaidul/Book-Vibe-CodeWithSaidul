@@ -49,6 +49,17 @@ function Navbar() {
             </NavLink>
 
             <NavLink
+              to="/books"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-lg text-[#23BE0A] border border-[#23BE0A] rounded-lg py-1 px-5"
+                  : "text-lg text-[#131313CC] border border-transparent rounded-lg py-1 px-5"
+              }
+            >
+              Books
+            </NavLink>
+
+            <NavLink
               to="/listed-books"
               className={({ isActive }) =>
                 isActive
@@ -109,6 +120,17 @@ function Navbar() {
             }
           >
             About
+          </NavLink>
+
+          <NavLink
+            to="/books"
+            className={({ isActive }) =>
+              isActive
+                ? "text-lg text-[#23BE0A] border border-[#23BE0A] rounded-lg py-1 px-5"
+                : "text-lg text-[#131313CC] border border-transparent rounded-lg py-1 px-5"
+            }
+          >
+            Books
           </NavLink>
 
           <NavLink
