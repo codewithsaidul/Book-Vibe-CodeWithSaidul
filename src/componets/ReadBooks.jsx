@@ -18,10 +18,6 @@ const ReadBooks = ({ readBook }) => {
     rating,
   } = readBook;
 
-  console.log(readBook.length);
-
-   
- 
   return (
     <div className="border p-5 rounded-xl">
       <div className="flex flex-col lg:flex-row gap-10">

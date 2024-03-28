@@ -100,7 +100,6 @@ function Navbar() {
             Home
           </NavLink>
 
-
           <NavLink
             to="/books"
             className={({ isActive }) =>
