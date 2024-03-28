@@ -31,19 +31,7 @@ export const saveReadBooks = book => {
 }
 
 
-// Book Removed From Read List
 
-export const removeReadList = bookId => {
-    let readBooks = getReadBooks();
-
-    console.log(bookId);
-
-    const remainingReadList = readBooks.filter(b => b.bookId !== bookId);
-
-    localStorage.setItem('read-books', JSON.stringify(remainingReadList));
-
-    toast.success('Remove From Read List!')
-}
 
 
 
@@ -89,17 +77,3 @@ export const saveWishlist = book => {
 
 }
 
-// Book Removed From Wish List
-
-
-export const removeWishList = bookId => {
-    let wishList = getWishlist();
-
-    console.log(bookId);
-
-    const remainingWishList = wishList.filter(b => b.bookId !== bookId);
-
-    localStorage.setItem('wish-books', JSON.stringify(remainingWishList));
-
-    toast.success('Remove From Wish List!')
-}
