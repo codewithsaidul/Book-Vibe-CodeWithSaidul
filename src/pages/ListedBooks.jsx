@@ -2,7 +2,7 @@
 import { IoIosArrowDown } from "react-icons/io";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getReadBooks, getWishlist } from "../utility/localStorage";
+import { getReadBooks, getWishlist, removeReadList, removeWishList } from "../utility/localStorage";
 import ReadBooks from "../componets/ReadBooks";
 import Wishlist from "../componets/Wishlist";
 
@@ -76,6 +76,23 @@ function ListedBooks() {
      }
   }
 
+  // Remove Books From Read Books List
+
+const deleteReadBooks = bookId => {
+  removeReadList(bookId);
+
+  const storedReadBooks = getReadBooks();
+  setDisplayReadBooks(storedReadBooks);
+}
+
+// Remove Books From Wish List
+
+const deleteWishList = bookId => {
+  removeWishList(bookId);
+
+  const storedWishList = getWishlist();
+  setDisplayWishlist(storedWishList);
+}
 
 
 
@@ -162,7 +179,7 @@ function ListedBooks() {
               <ReadBooks
                 key={readBook.bookId}
                 readBook={readBook}
-                
+                deleteReadBooks={deleteReadBooks}
               ></ReadBooks>
             ))}
         </div>
@@ -173,7 +190,7 @@ function ListedBooks() {
               <Wishlist
                 key={wishList.bookId}
                 wishList={wishList}
-                
+                deleteWishList={deleteWishList}
               ></Wishlist>
             ))}
         </div>

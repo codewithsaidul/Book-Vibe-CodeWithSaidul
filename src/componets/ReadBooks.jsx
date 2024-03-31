@@ -1,10 +1,11 @@
 import { CiLocationOn } from "react-icons/ci";
 import { FiUsers } from "react-icons/fi";
 import { TbPageBreak } from "react-icons/tb";
+import { MdDeleteForever } from "react-icons/md";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-const ReadBooks = ({ readBook }) => {
+const ReadBooks = ({ readBook, deleteReadBooks }) => {
   const {
     bookId,
     image,
@@ -20,7 +21,7 @@ const ReadBooks = ({ readBook }) => {
 
   return (
     <div className="border p-5 rounded-xl">
-      <div className="flex flex-col lg:flex-row gap-10">
+      <div className="flex flex-col lg:flex-row gap-10 relative">
         <figure className="lg:h-[300px] py-12 px-8 bg-[#1313130D]">
           <img src={image} className="h-full w-full" alt="book image" />
         </figure>
@@ -83,7 +84,12 @@ const ReadBooks = ({ readBook }) => {
           </div>
         </div>
 
-
+        <div
+          onClick={() => deleteReadBooks(bookId)}
+          className="absolute -top-7 lg:-top-10 -right-5 lg:-right-8 p-3 text-white bg-red-500 rounded-full"
+        >
+          <MdDeleteForever size={24} />
+        </div>
       </div>
     </div>
   );
@@ -91,7 +97,7 @@ const ReadBooks = ({ readBook }) => {
 
 ReadBooks.propTypes = {
   readBook: PropTypes.object,
-  
+  deleteReadBooks: PropTypes.func
 };
 
 export default ReadBooks;
