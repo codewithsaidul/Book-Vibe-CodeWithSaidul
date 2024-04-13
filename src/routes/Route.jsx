@@ -9,6 +9,7 @@ import BookDetails from "../pages/BookDetails";
 import Contact from "../componets/Contact";
 import ErrorPage from "../componets/ErrorPage";
 import Books from "../pages/Books";
+import Login from "../pages/Login";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
       {
         path: "/pagetoread",
         element: <PageToRead />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
       },
       {
         path: "/contact",

@@ -147,9 +147,11 @@ function Navbar() {
       </div>
 
       <div className="navbar-end">
-        <button className="py-2 px-2 sm:px-5 mr-3 bg-[#23BE0A] text-white rounded-lg">
-          Sign In
-        </button>
+        <Link to='/login'>
+          <button className="py-2 px-2 sm:px-5 mr-3 bg-[#23BE0A] text-white rounded-lg">
+            Sign In
+          </button>
+        </Link>
         <button className="py-2 px-2 sm:px-5 bg-[#59C6D2] text-white rounded-lg">
           Sign Up
         </button>

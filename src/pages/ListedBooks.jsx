@@ -82,6 +82,7 @@ const deleteReadBooks = bookId => {
   removeReadList(bookId);
 
   const storedReadBooks = getReadBooks();
+  setReadBooks(storedReadBooks);
   setDisplayReadBooks(storedReadBooks);
 }
 
@@ -91,6 +92,7 @@ const deleteWishList = bookId => {
   removeWishList(bookId);
 
   const storedWishList = getWishlist();
+  setWishList(storedWishList);
   setDisplayWishlist(storedWishList);
 }
 
